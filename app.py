@@ -42,7 +42,7 @@ def predict():
 
     classification = '%s (%s)' % (title, x_label)
 
-    return render_template('index.html', prediction = classification, showimage = image_path)
+    return render_template('index.html', prediction = classification)
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
