@@ -33,10 +33,10 @@ def predict():
     predictions = prediction[0][0]
 
     if predictions > 0.5:
-        title = "Prediction: Normal \n"
+        title = "Prediksi : Normal \n"
         x_label = "\n Akurasi: {:5.2f}%".format(200*(predictions-0.5))
     else:
-        title = "Prediction: Komedo \n"
+        title = "Prediksi : Berkomedo \n"
         x_label = "\n Akurasi: {:5.2f}%".format(200*(0.5-predictions))
 
     classification = '%s (%s)' % (title, x_label)
