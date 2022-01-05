@@ -15,7 +15,7 @@ def hello_word():
 @app.route('/', methods =['POST'])
 def predict():
     imagefile= request.files['imagefile']
-    image_path= "images/" + imagefile.filename
+    image_path= "static/images/" + imagefile.filename
     imagefile.save(image_path)
 
     images = []
@@ -34,15 +34,14 @@ def predict():
 
     if predictions > 0.5:
         title = "Prediction: Normal \n"
-        x_label = "\n Confidence: {:5.2f}%".format(200*(predictions-0.5))
+        x_label = "\n Akurasi: {:5.2f}%".format(200*(predictions-0.5))
     else:
         title = "Prediction: Komedo \n"
-        x_label = "\n Confidence: {:5.2f}%".format(200*(0.5-predictions))
-
+        x_label = "\n Akurasi: {:5.2f}%".format(200*(0.5-predictions))
 
     classification = '%s (%s)' % (title, x_label)
 
-    return render_template('index.html', prediction = classification)
+    return render_template('index.html', prediction = classification, image_path = image_path)
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
