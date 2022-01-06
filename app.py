@@ -6,7 +6,7 @@ from tensorflow import keras
 
 
 app = Flask(__name__)
-model = keras.models.load_model('Komedo-vs-Normal_model (1).h5')
+model = keras.models.load_model('Komedo-vs-Normal_model (2).h5')
 
 @app.route('/', methods =['GET'])
 def hello_word():
@@ -15,7 +15,7 @@ def hello_word():
 @app.route('/', methods =['POST'])
 def predict():
     imagefile= request.files['imagefile']
-    image_path= "static/images/" + imagefile.filename
+    image_path= "static/images/" +  imagefile.filename
     imagefile.save(image_path)
 
     images = []
