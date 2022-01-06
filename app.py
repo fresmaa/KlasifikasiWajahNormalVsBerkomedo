@@ -6,7 +6,7 @@ from tensorflow import keras
 
 
 app = Flask(__name__)
-model = keras.models.load_model('Komedo-vs-Normal_model (2).h5')
+model = keras.models.load_model('Komedo-vs-Normal_model (1).h5')
 
 @app.route('/', methods =['GET'])
 def hello_word():
@@ -42,6 +42,10 @@ def predict():
     classification = '%s (%s)' % (title, x_label)
 
     return render_template('index.html', prediction = classification, image_path = image_path)
+
+@app.route('/index.html')
+def index():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
